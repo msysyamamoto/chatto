@@ -1,0 +1,9 @@
+twitter:
+  consumer_key: xxxxxxxxxxxxxxxxxxxxx 
+  consumer_secret: yyyyyyyyyyyyyyyyyyyyyyyyyy
+  callback_url: http://192.0.2.0/auth
+
+pusher:
+  app_id: 0000
+  key:    aaaaaaaaaaaaaaaaaaaa 
+  secret: bbbbbbbbbbbbbbbbbbbb

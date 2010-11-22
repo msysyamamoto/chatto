@@ -1,0 +1,170 @@
+$width: 624px
+$height_top: 40px
+
+*
+  font-family: 'Droid Sans','Helvetica Neue',Arial,sans-serif
+  margin: 0
+  padding: 0
+  outline: 0
+
+html, body
+  background-color: #b0e976
+  width: 100%
+  height: 100%
+  border-style: none
+
+img
+  border-style: none
+
+li
+  list-style: disc outside none
+  list-style-type: none
+
+.messages
+  width: $width 
+  margin: 40px auto
+  text-align: center
+  background-color: #ffffff
+  padding: 8px
+  border: 1px solid #186a00
+  color: #003000
+
+#room_name_form
+  height: 18px
+  width: 160px
+  font-size: 15px
+  border: none 
+
+#top_bar_outer
+  width: 100%
+  height: $height_top 
+  background-color: #186a00
+  color: #ffffff
+
+#top_bar
+  width: $width 
+  margin: 0 auto
+  height: $height_top 
+  .top_bar_inside
+    position: relative
+  .static_links
+    float: left
+  a
+    color: #ffffff
+  a:hover
+    color: #f0f0a0
+  form
+    height: 26px
+  ul
+    float: left
+    list-style: disc outside none
+    list-style-type: none
+  li
+    float: left
+    line-height: 24px
+    padding: 7px 0px
+  .sign_in
+    padding: 6px 0px
+  .sign_in_img
+    height: 26px
+  .exit
+    padding-left: 0px
+    padding-bottom: 0px
+  .active_links
+    position: absolute
+    right: 0
+    top: 0
+    width: 400px
+    .prof
+      padding-right: 8px 
+    ul
+      font-weight: bold
+      position: absolute
+      right: 0
+#name
+  display: none
+
+#global_nav
+  float: left
+
+#content
+  margin-left: auto
+  margin-right: auto
+  margin-top: $height_top 
+  width: $width 
+
+.clear
+  clear: both
+
+.shy
+  display: none
+
+#members
+  min-height: 24px
+  background-color: #efffef
+  .member-img
+    float: left
+
+#chat_box
+  width: $width
+  height: 400px
+  overflow-y: auto
+  overflow-x: hidden 
+  background-color: #efffef
+  padding-top: 15px
+
+#text_form
+  height: 50px
+  background-color: #c0efc0
+
+#text_wrap
+  padding-top: 15px
+  margin-left: auto
+  margin-right: auto
+  width: 95%
+
+#text
+  height: 20px
+  font-size: 16px
+  width: 100%
+  border: 1px solid #336633
+
+#room
+  height: 24px
+
+#room_name
+  font-size: 16px
+  font-weight: bold
+
+.label1
+  font-size: 13px 
+  font-weight: normal
+
+.chat_item
+  clear: both
+  margin-left: auto
+  margin-right: auto
+  margin-bottom: 3px
+  padding-bottom: 3px
+  width: 95%
+  border-bottom: 1px dotted #cccccc
+
+.chat_image
+  width: 24px
+  height: 24px
+  float: left
+
+.chat_user_name
+  font-size: 14px
+  color: #105000
+
+.chat_text
+  margin-left: 39px
+  line-height: 24px
+  word-wrap: break-word
+  font-size: 15px
+  color: #333333
+
+.prof_image
+  width: 24px
+  height: 24px
