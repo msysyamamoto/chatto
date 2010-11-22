@@ -33,13 +33,12 @@ configure do
 
   use Rack::Flash
 
-  set :config, YAML.load_file('config.yml') rescue nil || {}
+  set :conf, YAML.load_file('config.yml') rescue nil || {}
 
   # Pusher API Credentials
-  # settings.*** は Heroku では使えなんだ...
-  Pusher.app_id = ENV['PUSHER_APPID']  || settings.config['pusher']['app_id']
-  Pusher.key    = ENV['PUSHER_KEY']    || settings.config['pusher']['key']
-  Pusher.secret = ENV['PUSHER_SECRET'] || settings.config['pusher']['secret']
+  Pusher.app_id = ENV['PUSHER_APPID']  || settings.conf['pusher']['app_id']
+  Pusher.key    = ENV['PUSHER_KEY']    || settings.conf['pusher']['key']
+  Pusher.secret = ENV['PUSHER_SECRET'] || settings.conf['pusher']['secret']
 end
 
 before do
@@ -48,8 +47,8 @@ before do
   @user = session[:user] || {}
 
   @oauth = Twitter::OAuth.new(
-    ENV['TWITTER_CONSUMERKEY']    || settings.config['twitter']['consumer_key'],
-    ENV['TWITTER_CONSUMERSECRET'] || settings.config['twitter']['consumer_secret'],
+    ENV['TWITTER_CONSUMERKEY']    || settings.conf['twitter']['consumer_key'],
+    ENV['TWITTER_CONSUMERSECRET'] || settings.conf['twitter']['consumer_secret'],
     :sign_in => true,
     :signing_endpoint => 'https://api.twitter.com'
   )
@@ -68,7 +67,7 @@ end
 get '/login' do
   begin
     request_token = @oauth.request_token(
-        :oauth_callback => ENV['TWITTER_CALLBACKURL'] || settings.config['twitter']['callback_url']
+        :oauth_callback => ENV['TWITTER_CALLBACKURL'] || settings.conf['twitter']['callback_url']
     )
   rescue OAuth::Unauthorized => exp
     pp exp
@@ -143,6 +142,7 @@ get '/logout' do
 end
 
 =begin
+# css 開発時
 get '/css/chat.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :chat
