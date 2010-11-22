@@ -1,0 +1,42 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    crack (0.1.8)
+    haml (3.0.23)
+    hashie (0.4.0)
+    httparty (0.6.1)
+      crack (= 0.1.8)
+    json (1.4.6)
+    multi_json (0.0.5)
+    oauth (0.4.4)
+    pusher (0.6.0)
+      crack
+      json
+      ruby-hmac
+      signature
+    rack (1.2.1)
+    rack-flash (0.1.1)
+      rack
+    ruby-hmac (0.4.0)
+    signature (0.1.2)
+      ruby-hmac
+    sinatra (1.1.0)
+      rack (~> 1.1)
+      tilt (~> 1.1)
+    tilt (1.1)
+    twitter (0.9.12)
+      hashie (~> 0.4.0)
+      httparty (~> 0.6.1)
+      multi_json (~> 0.0.4)
+      oauth (~> 0.4.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  haml
+  json
+  pusher
+  rack-flash
+  sinatra
+  twitter
