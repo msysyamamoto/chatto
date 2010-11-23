@@ -161,10 +161,13 @@ get '/chat' do
 end
 
 post '/chat' do
-  redirect '/' if params[:room].to_s.size <= 0
-
-  room = params[:room].split(//)[0..19].join # 最大20文字
-  session[:room] = room 
+  # Every channel is identified by a name containing only alphanumeric characters, '-', '_' and ':'.
+  # 20 は勝手に決めた
+  unless params[:room] =~ /^[-:\w]{1,20}$/
+    flash[:notice] = 'チャットルームには アルファベット, 数字, "-", "_", ":" だけが使えます。'
+    redirect '/'
+  end
+  session[:room] = params[:room] 
   haml :chat, :locals => {:index => false}
 end
 
