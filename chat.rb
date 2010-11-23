@@ -34,6 +34,7 @@ configure do
   use Rack::Flash
 
   set :conf, YAML.load_file('config.yml') rescue nil || {}
+  set :hoge, "aghaiosdh"
 
   # Pusher API Credentials
   Pusher.app_id = ENV['PUSHER_APPID']  || settings.conf['pusher']['app_id']
@@ -42,6 +43,7 @@ configure do
 end
 
 before do
+p settings.hoge
   next if request.path_info =~ /(css|json|ico)$/
 
   @user = session[:user] || {}
