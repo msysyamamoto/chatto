@@ -207,8 +207,8 @@ post '/pusher/auth' do
   # twitter の名前は"-"は使えないの、偶然重なることはない
   else
     user_id   = 'anonymous-' + Time.new.to_f.to_s.gsub(/\./, '') + rand(1000).to_s
-    user_name = 'anonymous'
-    image_url = '/img/anonymous.png' 
+    user_name = ''
+    image_url = ''
     login     = false
   end
 
