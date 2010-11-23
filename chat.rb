@@ -34,7 +34,7 @@ configure do
   use Rack::Flash
 
   set :conf, YAML.load_file('config.yml') rescue nil || {}
-  set :hoge, "aghaiosdh"
+  set :hoge, {:hash => "aghaiosdh"}
 
   # Pusher API Credentials
   Pusher.app_id = ENV['PUSHER_APPID']  || settings.conf['pusher']['app_id']
