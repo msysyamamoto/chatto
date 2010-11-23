@@ -5,7 +5,7 @@
   %meta{'http-equiv' => 'Content-Style-Type', 'content' => 'text/css'}
   %link{'href' => 'http://fonts.googleapis.com/css?family=Droid+Sans&subset=latin', 'rel' => 'stylesheet', 'type' => 'text/css'}
   %link{'href' => '/css/chat.css', 'rel' => 'stylesheet'}
-  %title Chat
+  %title chat
 %body
   #top_bar_outer
     #top_bar
@@ -16,11 +16,11 @@
               %li
                 -if index
                   %form{'method' => 'POST', 'action' => '/chat'}
-                    %span Chat Room :
+                    %span chat room :
                     %input#room_name_form{'maxlength' => 20, 'type' => 'text', 'name' => 'room'}
                     %button{'type' => 'submit'} Join
                 - else
-                  %span Chat Room :
+                  %span chat room :
                   %span#room_name 
                   %span.label1= " . "
                   %a.label1{:href=>"/"} exit
