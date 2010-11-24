@@ -53,16 +53,6 @@ before do
     :sign_in => true,
     :signing_endpoint => 'https://api.twitter.com'
   )
-
-=begin
-  # twitter に投稿する必要がでてきたときに
-  if session[:access_token]
-    @oauth.authorize_from_access(session[:access_token], session[:access_token_secret])
-    @twitter = Twitter::Base.new(@oauth)
-  else
-    @twitter = nil
-  end
-=end
 end
 
 get '/login' do
