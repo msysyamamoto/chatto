@@ -8,6 +8,7 @@ require 'json'
 require 'twitter'
 require 'pusher'
 require 'rack-flash'
+require 'em-http'
 require 'pp'
 
 # user_id, screen_name が欲しいので
@@ -189,7 +190,7 @@ post '/post' do
   }
 
   begin
-    Pusher[channel].trigger('chat_post', chat.to_json)
+    Pusher[channel].trigger_async('chat_post', chat.to_json)
   rescue => e
     pp e
     500

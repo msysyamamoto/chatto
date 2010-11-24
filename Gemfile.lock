@@ -1,7 +1,12 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.2.2)
     crack (0.1.8)
+    em-http-request (0.2.15)
+      addressable (>= 2.0.0)
+      eventmachine (>= 0.12.9)
+    eventmachine (0.12.10)
     haml (3.0.23)
     hashie (0.4.0)
     httparty (0.6.1)
@@ -34,6 +39,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  em-http-request
   haml
   json
   pusher
