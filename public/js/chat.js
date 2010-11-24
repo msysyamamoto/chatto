@@ -1,38 +1,35 @@
 $(function() {
   if ($("#chat_box").length > 0) {
-    $.ajax({
-      type: 'GET',
-      url:  '/room.json',
-      success: function(json) {
-        var room = $.parseJSON(json);
-        $('#room_name').text(room.name);
+    $.get('/room.json', {}, function(json){
+      var room = $.parseJSON(json);
+      $('#room_name').text(room.name);
 
-        var sock = new Pusher('d0d8b7b3b8fa92ca9954');
+      var sock = new Pusher('d0d8b7b3b8fa92ca9954');
 
-        var ch = sock.subscribe('presence-' + room.name);
+      var ch = sock.subscribe('presence-' + room.name);
 
-        ch.bind('pusher:subscription_succeeded', function(member_list){
-          $.each(member_list, function(i, member){
-            join(member);
-          });
-        });
-
-        ch.bind('pusher:member_added', function(member){
-          join(member);
-        });
-
-        ch.bind('pusher:member_removed', function(member){
-          unjoin(member);
-        });
-
-        ch.bind('chat_post', function(data) {
-          you_have_got_message(data);
-        });
-      },
-      complete: function (XMLHttpRequest, textStatus) {
+      sock.bind('pusher:connection_established', function(evt){
         $('#text').attr('disabled', '');
         $('#text').focus();
-      }
+      });
+
+      ch.bind('pusher:subscription_succeeded', function(member_list){
+        $.each(member_list, function(i, member){
+          join(member);
+        });
+      });
+
+      ch.bind('pusher:member_added', function(member){
+        join(member);
+      });
+
+      ch.bind('pusher:member_removed', function(member){
+        unjoin(member);
+      });
+
+      ch.bind('chat_post', function(data) {
+        you_have_got_message(data);
+      });
     });
 
     $('#text_form').submit(function() {
