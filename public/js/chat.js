@@ -9,7 +9,7 @@ $(function() {
       var ch = sock.subscribe('presence-' + room.name);
 
       sock.bind('pusher:connection_established', function(evt){
-        $('#text').attr('disabled', '');
+        toggle_text();
         $('#text').focus();
       });
 
@@ -34,17 +34,16 @@ $(function() {
 
     $('#text_form').submit(function() {
       if ($('#text').val().length > 0) {
-          $('#text').attr('disabled', 'disabled');
+          toggle_text();
+
           $.ajax({
             type: 'POST',
             url:  '/post',
             data: {'text': $('#text').val(), name: $('#name').text()},
             success: function(data) {
               $('#text').val('');
-              $('#text').focus();
             },
             error: function(data) {
-              $('#text').focus();
               $('.messages').empty();
               $('.messages').append(
                 '<ul><li>Failed to post message.</li></ul>'
@@ -53,7 +52,8 @@ $(function() {
               setTimeout(function() { $('.messages').fadeOut('slow'); }, 3000);
             },
             complete: function (XMLHttpRequest, textStatus) {
-              $('#text').attr('disabled', '');
+              toggle_text();
+              $('#text').focus();
             }
           });
       }
@@ -94,4 +94,17 @@ function unjoin(member) {
 
 function make_member_id(member) {
   return '#member-' + member.user_id;
+}
+
+function toggle_text() {
+    var txt = $('#text');
+    if (txt.is('.entext') == true) {
+      txt.attr('disabled', 'disabled');
+      txt.removeClass('entext');
+      txt.addClass('distext');
+    } else {
+      txt.attr('disabled', '');
+      txt.removeClass('distext');
+      txt.addClass('entext');
+    }
 }
