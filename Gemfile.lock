@@ -14,11 +14,11 @@ GEM
     json (1.4.6)
     multi_json (0.0.5)
     oauth (0.4.4)
-    pusher (0.6.0)
-      crack
-      json
-      ruby-hmac
-      signature
+    pusher (0.8.0)
+      crack (~> 0.1.0)
+      json (~> 1.4.0)
+      ruby-hmac (~> 0.4.0)
+      signature (~> 0.1.2)
     rack (1.2.1)
     rack-flash (0.1.1)
       rack
