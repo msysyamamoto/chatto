@@ -21,7 +21,7 @@ $(function() {
 
       ch.bind('pusher:subscription_succeeded', function(member_list){
         $.each(member_list._members_map, function(i, member){
-          join(member);
+          join({id:i, info:member});
         });
       });
 
@@ -86,9 +86,7 @@ function you_have_got_message(data) {
 }
 
 function join(member) {
-  member = mwrap(member);
   var id = make_member_id(member);
-
   $('#template_draw').setTemplateElement('member_template');
   $('#template_draw').processTemplate(member);
   $('#members').append($('#template_draw').html());
@@ -101,7 +99,7 @@ function unjoin(member) {
 }
 
 function make_member_id(member) {
-  return '#member-' + member.user_id;
+  return '#member-' + member.id;
 }
 
 function toggle_text() {

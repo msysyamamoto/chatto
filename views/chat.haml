@@ -24,9 +24,9 @@
     </div>
 %textarea#member_template.shy
   :preserve
-    <div id="member-{$T.user_id}" class="member-img shy">
-      {#if $T.user_info.login}
-      <a href="http://twitter.com/{$T.user_id}"><img class="prof_image" src="{$T.user_info.image_url}" title="{$T.user_info.name}"></a>
+    <div id="member-{$T.id}" class="member-img shy">
+      {#if $T.info.login}
+      <a href="http://twitter.com/{$T.id}"><img class="prof_image" src="{$T.info.image_url}" title="{$T.info.name}"></a>
       {#else}
       <img class="prof_image" src="/img/anonymous.png" title="anonymous"></a>
       {#/if}
