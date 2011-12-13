@@ -8,13 +8,19 @@ $(function() {
 
       var ch = sock.subscribe('presence-' + room.name);
 
+      /* old version
       sock.bind('pusher:connection_established', function(evt){
+        toggle_text();
+        $('#text').focus();
+      });
+      */
+      sock.connection.bind('connected', function() {
         toggle_text();
         $('#text').focus();
       });
 
       ch.bind('pusher:subscription_succeeded', function(member_list){
-        $.each(member_list, function(i, member){
+        $.each(member_list._members_map, function(i, member){
           join(member);
         });
       });
@@ -80,7 +86,9 @@ function you_have_got_message(data) {
 }
 
 function join(member) {
+  member = mwrap(member);
   var id = make_member_id(member);
+
   $('#template_draw').setTemplateElement('member_template');
   $('#template_draw').processTemplate(member);
   $('#members').append($('#template_draw').html());
@@ -107,4 +115,10 @@ function toggle_text() {
       txt.removeClass('distext');
       txt.addClass('entext');
     }
+}
+
+function mwrap(obj) {
+  for (var id in obj) {
+    return {user_id:id, user_info:{image_url:obj[id].image_url, login:obj[id].login, name:obj[id].name}};
+  }
 }
